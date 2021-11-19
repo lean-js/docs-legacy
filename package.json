@@ -1,5 +1,6 @@
 {
   "name": "docs",
   "description": "Learn JavaScript a Lean Way",
-  "private": true
+  "private": true,
+  "license": "MIT"
 }
