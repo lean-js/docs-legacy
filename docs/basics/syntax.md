@@ -146,3 +146,61 @@ primzahlen.push(11, 13, 17, 19);
 console.log(person);
 console.log(primzahlen);
 ```
+
+## Ausdrücke und Operatoren
+
+### Ausdruck / Expression
+
+Ein JavaScript-Ausdruck "steht" für einen Wert. Die einfachste Form ist ein literaler primitiver Wert.
+
+```js
+42;
+```
+
+Natürlich ist auch eine Variable oder die Rückgabe einer aufgerufenen Funktion ein Ausdruck:
+
+```js
+const zahl = '17';
+zahl;
+parseInt(zahl);
+```
+
+### Operatoren
+
+Ausdrücke können mit Operatoren kombiniert werden und liefern neue Werte. JavaScript kennt gängige mathematische, bit-weise, relationale und logische Operatoren.
+
+```js
+// Mathematische Operatoren
+let summe = 0;
+summe = 17 + 4;
+summe = summe + 42;
+summe += 21; // increment by twentyone
+summe++; // increment by one
+const average = summe / 5;
+
+// Bit-weise Operatoren
+const verdoppelt = summe << 1;
+const erstesBit = summe & 1;
+
+// Relationale Operatoren
+const groesserAls = 17 > 4; // true
+
+// Logische Operatoren
+const logischesUnd = true && false; // false
+```
+
+> Zu den logischen Operatoren gibt es einen Unterabschnitt [Syntax/Logische Operatoren](../syntax/logical-operators.md).
+
+Zeichenketten-Verknüpfungen werden ebenfalls mit dem `+` Operator durchgeführt.
+
+```js
+const name = 'Thomas' + ' ' + 'Müller';
+name += ' (Fussballspieler)';
+```
+
+Falls einer nur der beiden Operanden vom Typ `string` ist, wird trotzdem eine Zeichenketten-Verknüpfung durchgeführt (der zweite also automatisch in seine Zeichenkette überführt - **toString**-Aufruf). Anders bei den anderen mathematischen Operatoren, hier wird versucht eine Konvertierung nach `number` durchzuführen.
+
+```js
+console.log('17' + 4);
+console.log('17' * 4);
+```
