@@ -9,6 +9,9 @@ export default defineUserConfig<DefaultThemeOptions>({
   themeConfig: {
     logo: '/images/logo.png',
 
+    repo: 'lean-js/docs',
+    docsDir: 'docs',
+
     navbar: [
       {
         text: 'Advanced',
