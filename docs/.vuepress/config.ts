@@ -14,6 +14,17 @@ export default defineUserConfig<DefaultThemeOptions>({
 
     navbar: [
       {
+        text: 'Basics',
+        children: [
+          {
+            text: 'Einführung',
+            link: '/basics/',
+            activeMatch: '^/$',
+          },
+          '/basics/types.md'
+        ]
+      },
+      {
         text: 'Advanced',
         children: [
           {
@@ -35,6 +46,15 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
     sidebar: {
+      '/basics/': [
+        {
+          text: 'Basics',
+          children: [
+            '/basics/README.md',
+            '/basics/types.md',
+          ],
+        },
+      ],
       '/advanced/oop/': [
         {
           text: 'OOP',
