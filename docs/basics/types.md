@@ -294,14 +294,6 @@ zahlStr = '' + 17;
 console.log(zahlStr, typeof zahlStr);
 ```
 
-Hier versteckt sich aber auch ein großer Fallstrick in JavaScript:
-
-```js
-const number = '4';
-const result = 17 + number;
-console.log(result, typeof result);
-```
-
 ### Von Zeichenkette
 
 ```js

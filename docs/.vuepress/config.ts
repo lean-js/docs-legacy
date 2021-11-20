@@ -21,8 +21,9 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: '/basics/',
             activeMatch: '^/$',
           },
-          '/basics/types.md'
-        ]
+          '/basics/types.md',
+          '/basics/syntax.md',
+        ],
       },
       {
         text: 'Advanced',
@@ -44,6 +45,14 @@ export default defineUserConfig<DefaultThemeOptions>({
           },
         ],
       },
+      {
+        text: 'ECMAScript 2015+',
+        children: [
+          '/es/scope.md',
+          '/es/spread.md',
+          '/es/destructuring.md'
+        ],
+      },
     ],
     sidebar: {
       '/basics/': [
@@ -52,6 +61,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             '/basics/README.md',
             '/basics/types.md',
+            '/basics/syntax.md',
           ],
         },
       ],
@@ -68,6 +78,16 @@ export default defineUserConfig<DefaultThemeOptions>({
           ],
         },
       ],
+      '/es/': [
+        {
+          text: 'ECMAScript 2015+',
+          children: [
+            '/es/scope.md',
+            '/es/spread.md',
+            '/es/destructuring.md',
+          ]
+        }
+      ]
     },
   },
 });
