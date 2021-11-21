@@ -24,6 +24,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           '/basics/types.md',
           '/basics/syntax.md',
           '/basics/functions.md',
+          '/basics/objects.md',
         ],
       },
       {
@@ -64,6 +65,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/basics/types.md',
             '/basics/syntax.md',
             '/basics/functions.md',
+            '/basics/objects.md',
           ],
         },
       ],
