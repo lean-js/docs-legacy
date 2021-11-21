@@ -204,3 +204,182 @@ Falls einer nur der beiden Operanden vom Typ `string` ist, wird trotzdem eine Ze
 console.log('17' + 4);
 console.log('17' * 4);
 ```
+
+## Gleichheit
+
+Um die Gleichheit von zwei Werten zu überprüfen, existieren in JavaScript zwei(!) Operatoren:
+
+* `===`: strikte, typsicherer Gleichheit mit drei Gleichheitszeichen
+* `==`: lockere bzw. abstrakte Gleicheit mit Typ-Erzwingung
+
+### Strict Equality
+
+Es ist dringend angeraten immer diese strikte Form der Gleichheitsprüfung zu verwenden. Das Wörtchen immer impliziert hier natürlich: keine Regel ohne Ausnahme.
+
+```js
+// Primitive Werte
+console.log('Hallo' === 'Hallo');   // true
+console.log(0 === false);           // false
+console.log(1 === true);            // false
+console.log(null === undefined);    // false
+
+// Objekte
+const primzahlen = [2,3,5];
+console.log(primzahlen === primzahlen); // true
+console.log(primzahlen == [2,3,4]);     // false
+```
+
+### Loose Equality
+
+Aus Bequemlichkeit ist es verschiedentlich durchaus erlaubt, nur locker zu prüfen. Man sollte sich der Konsequenzen bewusst sein.
+
+```js
+console.log(5 == '5');              // true
+console.log(0 == false);            // true
+console.log('' == false);           // true
+console.log([] == false);           // true
+console.log({} == false);           // false
+console.log(null == false);         // false
+console.log(undefined == false);    // false
+```
+
+## Logische Operatoren
+
+### Binäre Logik
+
+Die logischen Operatoren in JavaScript sind:
+
+* `&&` - logisches Und
+* `||` - logisches Oder
+* `!`  - logisches Nicht
+
+Alle drei führen eine Typ-Konvertierung nach `boolean` für nicht boolesche Werte durch (**coercion**). Das kann bewusst idiomatisch eingesetzt werden, aber auch zu Verwirrung führen.
+
+#### Truthiness
+
+Ein Wert gilt als **truthy**, wenn seine Coercion zu `true` führt. Alle anderen Werte sind **falsy**. Siehe hierzu [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
+
+Für die einzelnen Datentypen sind folgende Werte **falsy**:
+
+* **`boolean`**: `false`
+* **`number`**: `0`, `-0`, `NaN`
+* **`string`**: `''`
+* Und außerdem: `null` und `undefined`
+
+#### Logisches Nicht
+
+Wir benutzen das logische Nicht um einen **truthy**-Wert nach `false` umzuwandeln und umgekehrt.
+
+```js
+console.log(!true)
+console.log(!false)
+
+console.log(!0)
+console.log(!42)
+
+console.log(!'')
+console.log(!'hello')
+
+// Sometimes unexpected:
+console.log([] == false)
+console.log(![])
+```
+
+#### Logisches Und
+
+Der binäre logische Und-Operator (`&&`) bekommt zwei Operanden und es gilt:
+
+* Ist der erste Operand **falsy**, evaluiert der Ausdruck zu dem ersten Operanden.
+* Ist der erste Operand **truthy**, evaluiert der Ausdruck zu dem zweiten Operanden.
+
+```js
+console.log(true && false); // false
+console.log(42 && 'hello'); // 'hello'
+console.log(0 && 42);       // 0
+```
+
+> Es ist also keinesfalls so, dass der Wert des Ausdrucks vom Typ `boolean` ist.
+
+#### Logisches Oder
+
+Der binäre logische Oder-Operator (`||`) bekommt zwei Operanden und es gilt:
+
+* Ist der erste Operand **truthy**, evaluiert der Ausdruck zu dem ersten Operanden.
+* Ist der erste Operand **falsy**, evaluiert der Ausdruck zu dem zweiten Operanden.
+
+```js
+console.log(true || false); // true
+console.log(42 || 'hello'); // 42
+console.log(0 || 42);       // 42
+```
+
+> Auch hier ist natürlich der Wert des Ausdrucks nicht zwingend vom Typ `boolean`.
+
+#### Kurz-Schluss
+
+Beide Operatoren arbeiten im Kurz-Schluss-Verfahren (***short-circuiting***):
+
+* `&&`: Ist er erste Operand schon **falsy**, wird der zweite nicht mehr evaluiert. Eventuelle Nebeneffekte passieren demnach nicht.
+* '||': Ist der erste Operand schon **truthy**, wird der zweite genauso nicht mehr evaluiert.
+
+```js
+let counter = 1
+
+console.log(false && counter++);
+console.log(counter);
+
+console.log(true || counter++);
+console.log(counter);
+```
+
+### Sonderformen
+
+#### Ternärer Operator
+
+Abhängig von der **truthy/falsy**-Auswertung des ersten Operanden, evaluiert der Ausdruck zum zweiten bzw. dritten Operanden.
+
+```js
+const a = 17, b = 4;
+const max = a > b ? a : b;
+```
+
+#### Nullish-Coalescing (Vereinigung)
+
+Ist der erste Operand `null` oder `undefined`, evaluiert der Ausdruck zum zweiten Operanden.
+
+```js
+const firstOp = null;
+console.log(firstOp ?? 42);
+const firstNumber = 0;
+console.log(firstNumber ?? 42);
+
+// Zur Erinnerung:
+console.log(firstOp || 42);
+console.log(firstNumber || 42);
+```
+
+## Bedingte Ausführung
+
+JavaScript verfügt über zwei Schlüsselwörter, um bedingte Code-Ausführung zu realisieren:
+
+* **`if-else`**: Einfache Fallunterscheidung
+* **`switch`**: Mehrfach Fallunterscheidung
+
+## Wiederholte Ausführung
+
+Es gibt in JavaScript eine Vielzahl von Schleifen-Varianten mit jeweils unterschiedlichen Verwendungsszenarien.
+
+### Schleifen mit Abbruchkriterium
+
+* **`while`**: Test am Kopf der Schleife
+* **`do while`**: Test am Ende der Schleife
+* **`for`**: klassische Zählschleife
+
+### Iteration über Objekt-Eigenschaften
+
+* **`for-in`**: Schleife über alle (!) aufzählbaren Eigenschaften eines Objektes.
+
+### Iteration über Arrays
+
+* **`for-of`**: Schleife über ***iterable*** Objekte. Nicht nur Arrays!
+* **`forEach`**: Instanz-Methode von Arrays
