@@ -6,6 +6,10 @@ export default defineUserConfig<DefaultThemeOptions>({
   title: 'JavaScript Docs',
   description: 'Learn JavaScript a Lean Way',
 
+  plugins: [
+    '@snippetors/vuepress-plugin-code-copy'
+  ],
+
   themeConfig: {
     logo: '/images/logo.png',
 
