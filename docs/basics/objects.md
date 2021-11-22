@@ -7,6 +7,8 @@
 ```js
 // Leeres Objekt
 const emptyObject = {};
+const ebensoLeer = new Object();   // unüblich
+
 // Objekt mit Properties
 const environment = {
     browser: true,

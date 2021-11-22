@@ -32,6 +32,15 @@ export default defineUserConfig<DefaultThemeOptions>({
         ],
       },
       {
+        text: 'Standard API',
+        children: [
+          '/api/string.md',
+          '/api/array.md',
+          '/api/regex.md',
+          '/api/promise.md',
+        ]
+      },
+      {
         text: 'Advanced',
         children: [
           {
@@ -43,10 +52,12 @@ export default defineUserConfig<DefaultThemeOptions>({
                 activeMatch: '^/$',
               },
               '/advanced/oop/literal-objects.md',
+              '/advanced/oop/properties.md',
               '/advanced/oop/the-prototype.md',
               '/advanced/oop/the-constructor.md',
               '/advanced/oop/inheritance.md',
               '/advanced/oop/es-next.md',
+              '/advanced/oop/static-members.md',
             ],
           },
         ],
@@ -79,10 +90,12 @@ export default defineUserConfig<DefaultThemeOptions>({
           link: '/advanced/oop/',
           children: [
             '/advanced/oop/literal-objects.md',
+            '/advanced/oop/properties.md',
             '/advanced/oop/the-prototype.md',
             '/advanced/oop/the-constructor.md',
             '/advanced/oop/inheritance.md',
             '/advanced/oop/es-next.md',
+            '/advanced/oop/static-members.md',
           ],
         },
       ],
