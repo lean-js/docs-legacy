@@ -1,3 +1,4 @@
-# JavaScript Docs
-
-> Learn JavaScript a Lean Way
+---
+home: true
+title: Home
+---
